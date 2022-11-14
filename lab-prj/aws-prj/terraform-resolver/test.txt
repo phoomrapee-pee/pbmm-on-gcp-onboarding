@@ -1,0 +1,24 @@
+sudo groupadd -g 21000 ansible
+sudo useradd -u 21000 -g ansible -d /home/ansible -m -s /bin/bash ansible
+echo -e "ansible\nansible" | sudo passwd ansible
+sudo ln -s -f /usr/share/zoneinfo/Asia/Bangkok /etc/localtime
+echo LANG=en_US.utf-8 >> /etc/environment
+echo LC_ALL=en_US.utf-8 >> /etc/environment
+echo "ansible ALL=(ALL)       NOPASSWD: ALL" | sudo tee -a /etc/sudoers.d/ansible
+
+sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sudo service sshd restart
+
+
+access_keys=$(echo "YjVjZGMxYWEtMTk1Yy00YzNiLTg0OGMtNjViMDgxMzc0ODI2"| base64 -d)
+secret_keys=$(echo "NkdsSXdGeTJHcGoxL1Q2ZExjVytaQkR1K2dBPQ=="| base64 -d)
+token=$(curl -s --location --request POST 'https://asia-southeast1.cloud.twistlock.com/aws-singapore-961145824/api/v22.01/authenticate' \
+--header 'Content-Type: application/json' \
+--header 'charset: UTF-8' \
+--data-raw '{
+"username": "'${access_keys}'",
+"password": "'${secret_keys}'"
+}'| cut -d '"' -f4);
+cd /tmp;
+curl -sSL -k --header "authorization: Bearer ${token}" -X POST https://asia-southeast1.cloud.twistlock.com/aws-singapore-961145824/api/v1/scripts/defender.sh | sudo bash -s -- -c "asia-southeast1.cloud.twistlock.com" -d "none" -v -m --install-host
+exit 0
