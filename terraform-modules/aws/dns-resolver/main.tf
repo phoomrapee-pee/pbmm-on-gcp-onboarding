@@ -52,7 +52,7 @@ resource "aws_route53_resolver_rule_association" "fwd_association" {
 
 # ### for RAM---------------------------------
 resource "aws_ram_resource_share" "sender_share" {
-  count                     = share_resource ? 0 : 1
+  # count                     = var.share_resource ? 1 : 0
   provider                  = aws.src
   name                      = local.name_shared
   allow_external_principals = true
@@ -67,14 +67,15 @@ resource "aws_ram_resource_share" "sender_share" {
 }
 
 resource "aws_ram_resource_association" "default" {
-  count              = share_resource ? 0 : 1
+  # count              = var.share_resource ? 1 : 0
   provider           = aws.src
   resource_arn       = aws_route53_resolver_rule.fwd[0].arn
   resource_share_arn = aws_ram_resource_share.sender_share.arn
+  # resource_share_arn = aws_ram_resource_share.sender_share[count.index]
 }
 
 resource "aws_ram_principal_association" "sender_invite" {
-  count    = share_resource ? 0 : 1
+  # count    = var.share_resource ? 1 : 0
   provider = aws.src
   # principal = "642661817018"
   principal = var.ram_resource_association
@@ -84,10 +85,11 @@ resource "aws_ram_principal_association" "sender_invite" {
   # }
   # }
   resource_share_arn = aws_ram_resource_share.sender_share.arn
+  # resource_share_arn = aws_ram_resource_share.sender_share[count.index]
 }
 
 resource "aws_ram_resource_share_accepter" "receiver_accept" {
-  count    = share_resource ? 0 : 1
+  # count    = var.share_resource ? 1 : 0
   provider = aws.dst
   # for_each = var.aws_accounts
   # provider = {
@@ -95,12 +97,14 @@ resource "aws_ram_resource_share_accepter" "receiver_accept" {
   # }
   # receiver_account_id = "642661817018"
   share_arn = aws_ram_principal_association.sender_invite.resource_share_arn
+  # share_arn =  aws_ram_principal_association.sender_invite[count.index]
 }
 
 ##new 
 resource "aws_route53_resolver_rule_association" "example_association" {
-  count            = share_resource ? 0 : 1
+  # count            = var.share_resource ? 1 : 0
   provider         = aws.dst
+  # for_each         = var.share_resource ? toset(var.share_associated_vpc_id): []
   for_each         = toset(var.share_associated_vpc_id)
   resolver_rule_id = aws_route53_resolver_rule.fwd[0].id
   vpc_id           = each.value
