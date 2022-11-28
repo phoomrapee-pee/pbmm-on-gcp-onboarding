@@ -1,0 +1,2678 @@
+# Validate the infrastructure.
+terraform init -backend-config=environment-config/dataplatform/nonprod/backend-nonprod.hcl && terraform get && terraform validate
+[0m[1mInitializing modules...[0m
+
+[0m[1mInitializing the backend...[0m
+
+[0m[1mInitializing provider plugins...[0m
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v4.39.0
+
+[33m[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mMissing backend configuration[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m-backend-config was used without a "backend" block in the configuration.
+[33m│[0m [0m
+[33m│[0m [0mIf you intended to override the default local backend configuration,
+[33m│[0m [0mno action is required, but you may add an explicit backend block to your
+[33m│[0m [0mconfiguration to clear this warning:
+[33m│[0m [0m
+[33m│[0m [0mterraform {
+[33m│[0m [0m  backend "local" {}
+[33m│[0m [0m}
+[33m│[0m [0m
+[33m│[0m [0mHowever, if you intended to override a defined backend, please verify that
+[33m│[0m [0mthe backend configuration is present and valid.
+[33m│[0m [0m
+[33m╵[0m[0m
+[0m[0m
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+[32m[1mSuccess![0m The configuration is valid.
+[0m
+terraform init -backend-config=environment-config/dataplatform/nonprod/backend-nonprod.hcl && terraform get -update && terraform plan -var-file="configs/dataplatform/config-nonprod.json" -out="configs/dataplatform/terraform.tfplan"
+[0m[1mInitializing modules...[0m
+
+[0m[1mInitializing the backend...[0m
+
+[0m[1mInitializing provider plugins...[0m
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v4.39.0
+
+[33m[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mMissing backend configuration[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m-backend-config was used without a "backend" block in the configuration.
+[33m│[0m [0m
+[33m│[0m [0mIf you intended to override the default local backend configuration,
+[33m│[0m [0mno action is required, but you may add an explicit backend block to your
+[33m│[0m [0mconfiguration to clear this warning:
+[33m│[0m [0m
+[33m│[0m [0mterraform {
+[33m│[0m [0m  backend "local" {}
+[33m│[0m [0m}
+[33m│[0m [0m
+[33m│[0m [0mHowever, if you intended to override a defined backend, please verify that
+[33m│[0m [0mthe backend configuration is present and valid.
+[33m│[0m [0m
+[33m╵[0m[0m
+[0m[0m
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+- dns-route53-resolver in module-lab/dns-resolver
+- dns-route53-resolver-prod in module-lab/dns-resolver
+- dns-route53-resolver2 in module-lab/dns-resolver
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-gq9l3p-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "gq9l3p.asia-southeast1.gcp.confluent.cloud"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-gq9l3p-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-gq9l3p"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-p5nrqp-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "p5nrqp.asia-southeast1.gcp.confluent.cloud"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-p5nrqp-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-confluent-cloud-asia-southeast1-p5nrqp"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-dataplatform-common-es-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-dataplatform-common-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-dataplatform-common-es-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-es"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-dataplatform-common-kb-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-dataplatform-common-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-dataplatform-common-kb-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-dataplatform-common-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-app-es-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-apps-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-app-es-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-app-es"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-apps-kb-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-apps-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-apps-kb-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-apps-pt-es-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-apps-pt.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-apps-pt-es-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-apps-pt-kb-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-apps-pt.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-apps-pt-kb-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-apps-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-logging-np-es-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-logging-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-logging-np-es-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-es"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-logging-np-kb-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-logging-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-logging-np-kb-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-np-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-logging-pt-es-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-logging-pt.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-logging-pt-es-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-es"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_ram_principal_association.sender_invite[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_principal_association" "sender_invite" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mprincipal[0m[0m          = "642661817018"
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_ram_resource_association.default[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_association" "default" {
+      [32m+[0m [0m[1m[0mid[0m[0m                 = (known after apply)
+      [32m+[0m [0m[1m[0mresource_arn[0m[0m       = (known after apply)
+      [32m+[0m [0m[1m[0mresource_share_arn[0m[0m = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_ram_resource_share.sender_share[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share" "sender_share" {
+      [32m+[0m [0m[1m[0mallow_external_principals[0m[0m = true
+      [32m+[0m [0m[1m[0marn[0m[0m                       = (known after apply)
+      [32m+[0m [0m[1m[0mid[0m[0m                        = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                      = "rbh-outbound-gcp-workload-logging-pt-kb-np-shared"
+      [32m+[0m [0m[1m[0mpermission_arns[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                      = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m                  = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_ram_resource_share_accepter.receiver_accept[0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_ram_resource_share_accepter" "receiver_accept" {
+      [32m+[0m [0m[1m[0mid[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0minvitation_arn[0m[0m      = (known after apply)
+      [32m+[0m [0m[1m[0mreceiver_account_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mresources[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0msender_account_id[0m[0m   = (known after apply)
+      [32m+[0m [0m[1m[0mshare_arn[0m[0m           = (known after apply)
+      [32m+[0m [0m[1m[0mshare_id[0m[0m            = (known after apply)
+      [32m+[0m [0m[1m[0mshare_name[0m[0m          = (known after apply)
+      [32m+[0m [0m[1m[0mstatus[0m[0m              = (known after apply)
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_route53_resolver_rule.fwd[0][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule" "fwd" {
+      [32m+[0m [0m[1m[0marn[0m[0m                  = (known after apply)
+      [32m+[0m [0m[1m[0mdomain_name[0m[0m          = "ecd-rbh-workload-logging-pt.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+      [32m+[0m [0m[1m[0mid[0m[0m                   = (known after apply)
+      [32m+[0m [0m[1m[0mname[0m[0m                 = "rbh-outbound-gcp-workload-logging-pt-kb-np"
+      [32m+[0m [0m[1m[0mowner_id[0m[0m             = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_endpoint_id[0m[0m = "rslvr-out-1f0398246ea5468ab"
+      [32m+[0m [0m[1m[0mrule_type[0m[0m            = "FORWARD"
+      [32m+[0m [0m[1m[0mshare_status[0m[0m         = (known after apply)
+      [32m+[0m [0m[1m[0mtags[0m[0m                 = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+      [32m+[0m [0m[1m[0mtags_all[0m[0m             = {
+          [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+          [32m+[0m [0m"Company"      = "purpleventure"
+          [32m+[0m [0m"Environment"  = "nonprod"
+          [32m+[0m [0m"Project"      = "facility"
+          [32m+[0m [0m"Provisioner"  = "terraform"
+          [32m+[0m [0m"ServiceGroup" = "route53"
+        }
+
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.228.5"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+      [32m+[0m [0mtarget_ip {
+          [32m+[0m [0m[1m[0mip[0m[0m   = "172.25.240.6"
+          [32m+[0m [0m[1m[0mport[0m[0m = 53
+        }
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_route53_resolver_rule_association.example_association["vpc-0dee84f7e205c7d6b"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "example_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0dee84f7e205c7d6b"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-075cf9d08ab83b95e"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-075cf9d08ab83b95e"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-08ee2c2d96cdcdbc0"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-08ee2c2d96cdcdbc0"
+    }
+
+[1m  # module.dns-route53-resolver["gcp-workload-logging-pt-kb"].aws_route53_resolver_rule_association.fwd_association["vpc-0c76494bcc2a055ab"][0m will be created[0m[0m
+[0m  [32m+[0m[0m resource "aws_route53_resolver_rule_association" "fwd_association" {
+      [32m+[0m [0m[1m[0mid[0m[0m               = (known after apply)
+      [32m+[0m [0m[1m[0mresolver_rule_id[0m[0m = (known after apply)
+      [32m+[0m [0m[1m[0mvpc_id[0m[0m           = "vpc-0c76494bcc2a055ab"
+    }
+
+[0m[1mPlan:[0m 108 to add, 0 to change, 0 to destroy.
+[0m[0m
+[1mChanges to Outputs:[0m[0m
+  [32m+[0m [0m[1m[0mdns-route53-resolver-rule[0m[0m      = {
+      [32m+[0m [0mgcp-confluent-cloud-asia-southeast1-gq9l3p = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-gq9l3p-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "gq9l3p.asia-southeast1.gcp.confluent.cloud"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-gq9l3p-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-confluent-cloud-asia-southeast1-p5nrqp = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-p5nrqp-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "p5nrqp.asia-southeast1.gcp.confluent.cloud"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-confluent-cloud-asia-southeast1-p5nrqp-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-dataplatform-common-es                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-dataplatform-common-es-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-dataplatform-common-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-dataplatform-common-es-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-dataplatform-common-kb                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-dataplatform-common-kb-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-dataplatform-common-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-dataplatform-common-kb-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-app-es                        = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-app-es-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-apps-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-app-es-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-apps-kb                       = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-apps-kb-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-apps-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-apps-kb-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-apps-pt-es                    = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-apps-pt-es-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-apps-pt.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-apps-pt-es-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-apps-pt-kb                    = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-apps-pt-kb-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-apps-pt.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-apps-pt-kb-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-logging-np-es                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-logging-np-es-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-logging-np.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-logging-np-es-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-logging-np-kb                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-logging-np-kb-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-logging-np.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-logging-np-kb-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-logging-pt-es                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-logging-pt-es-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-logging-pt.es.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-logging-pt-es-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+      [32m+[0m [0mgcp-workload-logging-pt-kb                 = {
+          [32m+[0m [0maws_ram_principal_association = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mprincipal          = "642661817018"
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_association  = {
+              [32m+[0m [0mid                 = (known after apply)
+              [32m+[0m [0mresource_arn       = (known after apply)
+              [32m+[0m [0mresource_share_arn = (known after apply)
+            }
+          [32m+[0m [0maws_ram_resource_share        = {
+              [32m+[0m [0mallow_external_principals = true
+              [32m+[0m [0marn                       = (known after apply)
+              [32m+[0m [0mid                        = (known after apply)
+              [32m+[0m [0mname                      = "rbh-outbound-gcp-workload-logging-pt-kb-np-shared"
+              [32m+[0m [0mpermission_arns           = (known after apply)
+              [32m+[0m [0mtags                      = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtags_all                  = {
+                  [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                  [32m+[0m [0m"Company"      = "purpleventure"
+                  [32m+[0m [0m"Environment"  = "nonprod"
+                  [32m+[0m [0m"Project"      = "facility"
+                  [32m+[0m [0m"Provisioner"  = "terraform"
+                  [32m+[0m [0m"ServiceGroup" = "route53"
+                }
+              [32m+[0m [0mtimeouts                  = [90mnull[0m[0m
+            }
+          [32m+[0m [0mfwd                           = [
+              [32m+[0m [0m{
+                  [32m+[0m [0marn                  = (known after apply)
+                  [32m+[0m [0mdomain_name          = "ecd-rbh-workload-logging-pt.kb.psc.asia-southeast1.gcp.elastic-cloud.com"
+                  [32m+[0m [0mid                   = (known after apply)
+                  [32m+[0m [0mname                 = "rbh-outbound-gcp-workload-logging-pt-kb-np"
+                  [32m+[0m [0mowner_id             = (known after apply)
+                  [32m+[0m [0mresolver_endpoint_id = "rslvr-out-1f0398246ea5468ab"
+                  [32m+[0m [0mrule_type            = "FORWARD"
+                  [32m+[0m [0mshare_status         = (known after apply)
+                  [32m+[0m [0mtags                 = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtags_all             = {
+                      [32m+[0m [0m"AdminName"    = "tx.xxxx@scbtechx.io"
+                      [32m+[0m [0m"Company"      = "purpleventure"
+                      [32m+[0m [0m"Environment"  = "nonprod"
+                      [32m+[0m [0m"Project"      = "facility"
+                      [32m+[0m [0m"Provisioner"  = "terraform"
+                      [32m+[0m [0m"ServiceGroup" = "route53"
+                    }
+                  [32m+[0m [0mtarget_ip            = [
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.228.5"
+                          [32m+[0m [0mport = 53
+                        },
+                      [32m+[0m [0m{
+                          [32m+[0m [0mip   = "172.25.240.6"
+                          [32m+[0m [0mport = 53
+                        },
+                    ]
+                  [32m+[0m [0mtimeouts             = [90mnull[0m[0m
+                },
+            ]
+          [32m+[0m [0mfwd_association               = {
+              [32m+[0m [0mvpc-075cf9d08ab83b95e = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-075cf9d08ab83b95e"
+                }
+              [32m+[0m [0mvpc-08ee2c2d96cdcdbc0 = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-08ee2c2d96cdcdbc0"
+                }
+              [32m+[0m [0mvpc-0c76494bcc2a055ab = {
+                  [32m+[0m [0mid               = (known after apply)
+                  [32m+[0m [0mname             = [90mnull[0m[0m
+                  [32m+[0m [0mresolver_rule_id = (known after apply)
+                  [32m+[0m [0mtimeouts         = [90mnull[0m[0m
+                  [32m+[0m [0mvpc_id           = "vpc-0c76494bcc2a055ab"
+                }
+            }
+        }
+    }
+  [32m+[0m [0m[1m[0mdns-route53-resolver-rule-prod[0m[0m = {}
+[90m
+─────────────────────────────────────────────────────────────────────────────[0m
+
+Saved the plan to: configs/dataplatform/terraform.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "configs/dataplatform/terraform.tfplan"

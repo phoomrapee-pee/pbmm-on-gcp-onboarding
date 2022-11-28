@@ -1,0 +1,39 @@
+{
+  "role_arn": "arn:aws:iam::728459525782:role/RBHAdminRole",
+  "role_arn_dst" : "arn:aws:iam::176841248351:role/RBHAdminRole",
+  "project_name" : "pam",
+  "share_resource" : true,
+  "company" : "rbh",
+  "environment" : "np",
+  "common_tags": {
+    "Company": "purpleventure",
+    "Project": "facility",
+    "ServiceGroup": "route53",
+    "Environment": "nonprod",
+    "AdminName": "tx.xxxx@scbtechx.io",
+    "Provisioner": "terraform"
+  },
+  "region": "ap-southeast-1",
+  "domain_name_object": [
+    {
+      "job": "gcp-np-private-gcpppv-tech",
+      "dns_name": "np.private.gcpppv.tech.",
+      "endpoint_type" : "outbound",
+      "rule_type": "FORWARD",
+      "resolver_endpoint_id": "rslvr-out-1f0398246ea5468ab",
+      "target_gcp_ip_address": [
+        "172.25.228.5",
+        "172.25.240.6"
+      ],  
+      "associated_vpc_id": [
+        "vpc-0c76494bcc2a055ab",
+        "vpc-075cf9d08ab83b95e",
+        "vpc-08ee2c2d96cdcdbc0"
+      ],
+      "ram_resource_association" : "176841248351",
+      "share_associated_vpc_id" : [
+        "vpc-0509311a972511605"
+      ]
+    }
+  ]
+}

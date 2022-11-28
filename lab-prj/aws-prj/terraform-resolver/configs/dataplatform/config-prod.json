@@ -1,0 +1,159 @@
+{
+  "role_arn": "arn:aws:iam::414508995086:role/RBHAdminRole",
+  "role_arn_dst" : "arn:aws:iam::430911549125:role/RBHAdminRole",
+  "project_name" : "dataplatform",
+  "share_resource" : true,
+  "company" : "rbh",
+  "environment" : "prd",
+  "common_tags": {
+    "Company": "purpleventure",
+    "Project": "facility",
+    "ServiceGroup": "route53",
+    "Environment": "prod",
+    "AdminName": "tx.xxxx@scbtechx.io",
+    "Provisioner": "terraform"
+  },
+  "region": "ap-southeast-1",
+  "domain_name_object": [
+    {
+      "job": "gcp-dataplatform-common-es-prd",
+      "dns_name": "ecd-rbh-dataplatform-common-prd.es.psc.asia-southeast1.gcp.elastic-cloud.com.",
+      "endpoint_type" : "outbound",
+      "rule_type": "FORWARD",
+      "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+      "target_gcp_ip_address": [
+        "172.25.112.3",
+        "172.25.116.2"
+      ],  
+      "associated_vpc_id": [
+        "vpc-023fd1fee6a60157c",
+        "vpc-0bc23f08ec277f07f",
+        "vpc-0e3b7a5aa560305c0"
+      ],
+      "ram_resource_association" : "430911549125",
+      "share_associated_vpc_id" : [
+        "vpc-0d9cb89d9532d67e1"
+      ]
+    },
+    {
+      "job": "gcp-dataplatform-common-kb-prd",
+      "dns_name": "ecd-rbh-dataplatform-common-prd.kb.psc.asia-southeast1.gcp.elastic-cloud.com.",
+      "endpoint_type" : "outbound",
+      "rule_type": "FORWARD",
+      "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+      "target_gcp_ip_address": [
+        "172.25.112.3",
+        "172.25.116.2"
+      ],  
+      "associated_vpc_id": [
+        "vpc-023fd1fee6a60157c",
+        "vpc-0bc23f08ec277f07f",
+        "vpc-0e3b7a5aa560305c0"
+      ],
+      "ram_resource_association" : "430911549125",
+      "share_associated_vpc_id" : [
+        "vpc-0d9cb89d9532d67e1"
+      ]
+    },
+    {
+    "job": "gcp-workload-apps-prd-es",
+    "dns_name": "ecd-rbh-workload-apps-prd.es.psc.asia-southeast1.gcp.elastic-cloud.com.",
+    "endpoint_type" : "outbound",
+    "rule_type": "FORWARD",
+    "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+    "target_gcp_ip_address": [
+      "172.25.112.3",
+      "172.25.116.2"
+    ],  
+    "associated_vpc_id": [
+      "vpc-023fd1fee6a60157c",
+      "vpc-0bc23f08ec277f07f",
+      "vpc-0e3b7a5aa560305c0"
+    ],
+    "ram_resource_association" : "430911549125",
+    "share_associated_vpc_id" : [
+      "vpc-0d9cb89d9532d67e1"
+    ]
+    },
+    {
+      "job": "gcp-workload-apps-prd-kb",
+      "dns_name": "ecd-rbh-workload-apps-prd.kb.psc.asia-southeast1.gcp.elastic-cloud.com.",
+      "endpoint_type" : "outbound",
+      "rule_type": "FORWARD",
+      "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+      "target_gcp_ip_address": [
+        "172.25.112.3",
+        "172.25.116.2"
+      ],  
+      "associated_vpc_id": [
+        "vpc-023fd1fee6a60157c",
+        "vpc-0bc23f08ec277f07f",
+        "vpc-0e3b7a5aa560305c0"
+      ],
+      "ram_resource_association" : "430911549125",
+      "share_associated_vpc_id" : [
+        "vpc-0d9cb89d9532d67e1"
+      ]
+      },
+      {
+        "job": "gcp-workload-logging-prd-es",
+        "dns_name": "ecd-rbh-workload-logging-prd.es.psc.asia-southeast1.gcp.elastic-cloud.com.",
+        "endpoint_type" : "outbound",
+        "rule_type": "FORWARD",
+        "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+        "target_gcp_ip_address": [
+          "172.25.112.3",
+          "172.25.116.2"
+        ],  
+        "associated_vpc_id": [
+          "vpc-023fd1fee6a60157c",
+          "vpc-0bc23f08ec277f07f",
+          "vpc-0e3b7a5aa560305c0"
+        ],
+        "ram_resource_association" : "430911549125",
+        "share_associated_vpc_id" : [
+          "vpc-0d9cb89d9532d67e1"
+        ]
+      },
+      {
+        "job": "gcp-workload-logging-prd-kb",
+        "dns_name": "ecd-rbh-workload-logging-prd.kb.psc.asia-southeast1.gcp.elastic-cloud.com.",
+        "endpoint_type" : "outbound",
+        "rule_type": "FORWARD",
+        "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+        "target_gcp_ip_address": [
+          "172.25.112.3",
+          "172.25.116.2"
+        ],  
+        "associated_vpc_id": [
+          "vpc-023fd1fee6a60157c",
+          "vpc-0bc23f08ec277f07f",
+          "vpc-0e3b7a5aa560305c0"
+        ],
+        "ram_resource_association" : "430911549125",
+        "share_associated_vpc_id" : [
+          "vpc-0d9cb89d9532d67e1"
+        ]
+      },
+      {
+        "job": "gcp-confluent-cloud-asia-southeast1-61nyqg",
+        "dns_name": "61nyqg.asia-southeast1.gcp.confluent.cloud.",
+        "endpoint_type" : "outbound",
+        "rule_type": "FORWARD",
+        "resolver_endpoint_id": "rslvr-out-a0695f05306a4baca",
+        "target_gcp_ip_address": [
+          "172.25.112.3",
+          "172.25.116.2"
+        ],  
+        "associated_vpc_id": [
+          "vpc-023fd1fee6a60157c",
+          "vpc-0bc23f08ec277f07f",
+          "vpc-0e3b7a5aa560305c0"
+        ],
+        "ram_resource_association" : "430911549125",
+        "share_associated_vpc_id" : [
+          "vpc-0d9cb89d9532d67e1"
+        ]
+      }
+  ]
+}

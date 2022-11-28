@@ -60,14 +60,12 @@
 terraform {
   backend "s3" {
     # key      = "platform/terraform_resolver_share_pam.tfstate"
-    # key = var.project_name
-    # key      = "platform/terraform_resolver_share_$project_name).tfstate"
+    # key      = "platform/terraform_resolver_share_${var.project_name}.tfstate"
     # key      = "platform/terraform_resolver.tfstate"
     # role_arn = "arn:aws:iam::728459525782:role/RBHAdminRole"
-    # role_arn = "arn:aws:iam::414508995086:role/RBHAdminRole"
     # role_arn = var.role_arn
   }
-}
+} 
 
 # ############################################################### production
 # terraform {

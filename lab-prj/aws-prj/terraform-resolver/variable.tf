@@ -72,3 +72,21 @@ variable "domain_name_object" {
 # #     { "aws_account_id": "642661817018","alias" : "rbh-dataplatform-nonprod","role_arn": "arn:aws:iam::642661817018:role/RBHAdminRole"},
 # #     ]
 # }
+
+variable "role_arn" {
+  # default = "arn:aws:iam::728459525782:role/RBHAdminRole"
+  type = string
+}
+
+variable "role_arn_dst" {
+  # default = "arn:aws:iam::728459525782:role/RBHAdminRole"
+  type = string
+}
+# variable "test" {
+#   default = aws.rbh-src
+# }
+
+variable "share_resource" {
+  type    = bool
+  default = false
+}
