@@ -1,0 +1,85 @@
+provider "aws" {
+  region = var.region
+  assume_role {
+    role_arn = var.assume_role_arn
+  }
+}
+
+provider "aws" {
+  alias = "devops"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::405524983081:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  region = var.region
+  alias = "network-prod"
+  assume_role {
+    role_arn = var.assume_role_arn
+  }
+}
+
+provider "aws" {
+  alias = "bank-prod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::298863071907:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  region = var.region
+  alias = "network-nonprod"
+  assume_role {
+    role_arn = var.assume_role_arn
+  }
+}
+
+provider "aws" {
+  alias = "chaiyo-nonprod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::334375151823:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  alias = "bank-nonprod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::549918006255:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  alias = "nonbank-nonprod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::476109445501:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  alias = "nonbank-prod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::082372545318:role/AellaAdminRole"
+  }
+}
+
+provider "aws" {
+  alias = "aiscb-prod"
+  region = var.region
+  assume_role {
+    role_arn = "arn:aws:iam::256713576834:role/AellaAdminRole"
+  }
+}
+
+terraform {
+  backend "s3" {
+    key = "aella-xplatform-dns/terraform_route53.tfstate"
+    role_arn = "arn:aws:iam::405524983081:role/AellaAdminRole"
+  }
+}
