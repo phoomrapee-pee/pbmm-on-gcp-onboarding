@@ -7,10 +7,20 @@ locals {
   # │ Error: "name" cannot be greater than 64 characters
   name        = "${var.company}-${var.endpoint_type}${local.job_key}-${local.env_key}${local.other_key}"
   name_shared = "${var.company}-${var.endpoint_type}${local.job_key}-${local.env_key}${local.other_key}-shared"
+
+  # aws_provider_src = {
+  #   nonprod  = local.aws_provider_src
+  #   prd      = aws.dst
+  # }
+  # aws_provider_src = aws.src-prd
+  # aws_provider_src = var.environment == "np" ? aws.src : aws.src-prd
+  # aws_provider_dst = var.environment == "np" ? aws.dst-prd : aws.dst
 }
 # project_names = gcp-workload-logging-es
 resource "aws_route53_resolver_rule" "fwd" {
-  provider             = aws.src
+  provider = aws.src
+  # provider = aws.src[var.environment]
+  # provider = local.aws_provider_src
   count                = var.endpoint_type == "inbound" ? 0 : 1
   domain_name          = var.dns_name
   name                 = local.name
@@ -42,6 +52,7 @@ resource "aws_route53_resolver_rule_association" "fwd_association" {
 
 # ### for RAM---------------------------------
 resource "aws_ram_resource_share" "sender_share" {
+  count                     = share_resource ? 0 : 1
   provider                  = aws.src
   name                      = local.name_shared
   allow_external_principals = true
@@ -56,13 +67,15 @@ resource "aws_ram_resource_share" "sender_share" {
 }
 
 resource "aws_ram_resource_association" "default" {
+  count              = share_resource ? 0 : 1
   provider           = aws.src
   resource_arn       = aws_route53_resolver_rule.fwd[0].arn
   resource_share_arn = aws_ram_resource_share.sender_share.arn
 }
 
 resource "aws_ram_principal_association" "sender_invite" {
-  provider  = aws.src
+  count    = share_resource ? 0 : 1
+  provider = aws.src
   # principal = "642661817018"
   principal = var.ram_resource_association
   # dynamic "principal" {
@@ -74,6 +87,7 @@ resource "aws_ram_principal_association" "sender_invite" {
 }
 
 resource "aws_ram_resource_share_accepter" "receiver_accept" {
+  count    = share_resource ? 0 : 1
   provider = aws.dst
   # for_each = var.aws_accounts
   # provider = {
@@ -85,6 +99,7 @@ resource "aws_ram_resource_share_accepter" "receiver_accept" {
 
 ##new 
 resource "aws_route53_resolver_rule_association" "example_association" {
+  count            = share_resource ? 0 : 1
   provider         = aws.dst
   for_each         = toset(var.share_associated_vpc_id)
   resolver_rule_id = aws_route53_resolver_rule.fwd[0].id

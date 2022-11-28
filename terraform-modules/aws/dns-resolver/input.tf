@@ -97,9 +97,14 @@ variable "target_gcp_ip_address" {
 variable "ram_resource_association" {
   description = "ram_resource_association"
   default     = ""
-  type = string
+  type        = string
 }
 
 # variable "aws_accounts"{
 #   type = list(map())
 # }
+
+variable "share_resource" {
+  type    = bool
+  default = false
+}
