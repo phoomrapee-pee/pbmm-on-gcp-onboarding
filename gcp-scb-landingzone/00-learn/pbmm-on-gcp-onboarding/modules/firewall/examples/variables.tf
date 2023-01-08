@@ -57,5 +57,5 @@ variable "department_code" {
 variable "location" {
   type        = string
   description = "location for naming purposes."
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }

@@ -46,13 +46,13 @@ variable "environment" {
 
 variable "location" {
   type        = string
-  description = "CSP and Region. Valid values: northamerica-northeast1. Code will be used for naming"
+  description = "CSP and Region. Valid values: asia-southeast1. Code will be used for naming"
 
   validation {
     condition = contains([
-      "northamerica-northeast1",
+      "asia-southeast1",
       ],
     var.location)
-    error_message = "Valid location values: northamerica-northeast1."
+    error_message = "Valid location values: asia-southeast1."
   }
 }

@@ -23,16 +23,16 @@ var commonArgsMap = commonArgsMapType{
 	"LzPe": commonArgsType{
 		"department_code": "Lz",
 		"environment":     "P",
-		"location":        "northamerica-northeast1",
+		"location":        "asia-southeast1",
 	},
 	"ScDe": commonArgsType{
 		"department_code": "Sc",
 		"environment":     "D",
-		"location":        "northamerica-northeast1",
+		"location":        "asia-southeast1",
 	},
 	"ScPe": commonArgsType{
 		"department_code": "Sc",
 		"environment":     "P",
-		"location":        "northamerica-northeast1",
+		"location":        "asia-southeast1",
 	},
 }

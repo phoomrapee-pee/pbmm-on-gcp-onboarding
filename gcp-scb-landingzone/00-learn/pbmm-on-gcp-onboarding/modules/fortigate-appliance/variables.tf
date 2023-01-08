@@ -38,12 +38,12 @@ variable "project" {
 
 variable "zone_1" {
   description = "Zone to place the first Fortigate appliance in"
-  default     = "northamerica-northeast1-a"
+  default     = "asia-southeast1-a"
 }
 
 variable "zone_2" {
   description = "Zone to place the second Fortigate appliance in"
-  default     = "northamerica-northeast1-b"
+  default     = "asia-southeast1-b"
 }
 
 variable "compute_resource_policy" {
@@ -106,7 +106,7 @@ variable "sleep_seconds" {
 
 variable "region" {
   description = "Region to place firwalls"
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 
 # naming
@@ -132,6 +132,6 @@ variable "user_defined_string" {
 
 variable "location" {
   description = "Location for naming"
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
   type        = string
 }

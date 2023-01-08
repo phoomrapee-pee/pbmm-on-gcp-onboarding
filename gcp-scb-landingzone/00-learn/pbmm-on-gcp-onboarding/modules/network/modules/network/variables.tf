@@ -40,7 +40,7 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "location for naming and resource placement"
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 
 variable "additional_user_defined_string" {

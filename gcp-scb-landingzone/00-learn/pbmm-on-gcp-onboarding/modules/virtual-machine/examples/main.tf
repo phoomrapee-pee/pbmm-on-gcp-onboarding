@@ -40,7 +40,7 @@ resource "google_compute_subnetwork" "subnetwork" {
   project       = module.project.project_id
   name          = "test-subnetwork"
   ip_cidr_range = "10.2.0.0/16"
-  region        = "northamerica-northeast1"
+  region        = "asia-southeast1"
   network       = google_compute_network.custom-test.id
 }
 
@@ -52,7 +52,7 @@ resource "google_compute_network" "custom-test" {
 
 resource "google_compute_resource_policy" "resource_policy" {
   name    = "na-policy"
-  region  = "northamerica-northeast1"
+  region  = "asia-southeast1"
   project = module.project.project_id
   snapshot_schedule_policy {
     schedule {
@@ -68,7 +68,7 @@ module "virtual_machine" {
   source = "../"
 
   project             = module.project.project_id
-  vm_zone             = "northamerica-northeast1-a"
+  vm_zone             = "asia-southeast1-a"
   image               = "centos-8"
   image_location      = "centos-cloud"
   user_defined_string = "foo"

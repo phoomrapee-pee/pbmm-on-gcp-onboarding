@@ -21,10 +21,10 @@ variable "user_defined_string" {
   type        = string
   description = "User defined string for the storage account, must a a unique value of lower-case letters or numbers with a maximum length of 20 characters."
 
-  validation {
-    condition     = can(regex("^[a-z0-9]{3,59}$", var.user_defined_string))
-    error_message = "Must be lower-case letters or numbers with a maximum length of 59 characters. Min 3 characters."
-  }
+  # validation {
+  #   condition     = can(regex("^[a-z0-9]{3,59}$", var.user_defined_string))
+  #   error_message = "Must be lower-case letters or numbers with a maximum length of 59 characters. Min 3 characters."
+  # }
 }
 
 # Module specific local variables

@@ -18,7 +18,7 @@
 
 variable "region" {
   type        = string
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
   description = "region to deploy bucket"
 }
 

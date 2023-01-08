@@ -2309,9 +2309,9 @@ Use the new "All Products" page for a list of Google Cloud Services https://cons
  #### Evidence: 
   - _0904_artifact_registry_vulnerability_scanning_example_run
   - Navigate to the artifact registry service at https://console.cloud.google.com/artifacts?project=traffic-os
-  - select the repository https://console.cloud.google.com/artifacts/docker/traffic-os/northamerica-northeast1/traffic-generation?project=traffic-os
-  - select the digest https://console.cloud.google.com/artifacts/docker/traffic-os/northamerica-northeast1/traffic-generation/traffic-generation?project=traffic-os
-  - select the image and the vulnarabilities tab [https://console.cloud.google.com/artifacts/docker/traffic-os/northamerica-northeast1/traffic-generation/traffic-generation/sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781;tab=vulnerabilities?project=traffic-os&supportedpurview=project](https://console.cloud.google.com/artifacts/docker/traffic-os/northamerica-northeast1/traffic-generation/traffic-generation/sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781;tab=vulnerabilities?project=traffic-os)
+  - select the repository https://console.cloud.google.com/artifacts/docker/traffic-os/asia-southeast1/traffic-generation?project=traffic-os
+  - select the digest https://console.cloud.google.com/artifacts/docker/traffic-os/asia-southeast1/traffic-generation/traffic-generation?project=traffic-os
+  - select the image and the vulnarabilities tab [https://console.cloud.google.com/artifacts/docker/traffic-os/asia-southeast1/traffic-generation/traffic-generation/sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781;tab=vulnerabilities?project=traffic-os&supportedpurview=project](https://console.cloud.google.com/artifacts/docker/traffic-os/asia-southeast1/traffic-generation/traffic-generation/sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781;tab=vulnerabilities?project=traffic-os)
  
 - <img width="1434" alt="Screen Shot 2022-06-22 at 12 00 54 PM" src="https://user-images.githubusercontent.com/94715080/175078259-b6aa138a-667a-4a33-9c12-4f5733981fa3.png">
 - Turning on Vulnerability Scanning in Artifact Registry
@@ -2389,7 +2389,7 @@ curl http://127.0.0.1/nbi/api
  - ![img](img/_6888_logging_agent_logs_from_vm_in_logging_api.png)
  - 
  - This control requires that a workload has been deployed
- - Navigate to the VM that is generating the logs (the Stackdriver logging agent docker container must be deployed along with the workload container) https://console.cloud.google.com/compute/instancesDetail/zones/northamerica-northeast1-a/instances/traffic-generation-target-private?project=traffic-os&supportedpurview=project&pageState=(%22duration%22:(%22groupValue%22:%22PT1H%22,%22customValue%22:null))
+ - Navigate to the VM that is generating the logs (the Stackdriver logging agent docker container must be deployed along with the workload container) https://console.cloud.google.com/compute/instancesDetail/zones/asia-southeast1-a/instances/traffic-generation-target-private?project=traffic-os&supportedpurview=project&pageState=(%22duration%22:(%22groupValue%22:%22PT1H%22,%22customValue%22:null))
  
  <img width="1436" alt="_6889_logging_agent_logs_from_vm_click_link_on_VM" src="https://user-images.githubusercontent.com/94715080/175197771-c2d59985-c53b-456b-bb3f-5c1a46aea25a.png">
 
@@ -2586,7 +2586,7 @@ etag: CMe_i5gGEKDVkL8D
 listPolicy:
   allowedValues:
   - in:northamerica-northeast2-locations
-  - in:northamerica-northeast1-locations
+  - in:asia-southeast1-locations
 updateTime: '2022-08-22T01:45:43.937700Z'
 ```
 
@@ -3224,7 +3224,7 @@ Focus on IA control of privileged system and Administrator Accounts.  Review of 
  To generate logs either run a couple curls directly on the target VM - or turn on traffic generation on the source cloud run container.  Use your own system DNS and IPs in place of below
   VM (for logs, ssh and the IP for the traffic generator
   
-  https://console.cloud.google.com/compute/instancesDetail/zones/northamerica-northeast1-a/instances/traffic-generation-target-private?project=traffic-os&supportedpurview=project&pageState=(%22duration%22:(%22groupValue%22:%22PT1H%22,%22customValue%22:null))
+  https://console.cloud.google.com/compute/instancesDetail/zones/asia-southeast1-a/instances/traffic-generation-target-private?project=traffic-os&supportedpurview=project&pageState=(%22duration%22:(%22groupValue%22:%22PT1H%22,%22customValue%22:null))
   
   swagger
     

@@ -51,7 +51,7 @@ variable "parent" {
 variable "region" {
   description = "The default region of all resources."
   type        = string
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 variable "owner" {
   type        = string

@@ -20,7 +20,7 @@ locals {
   local_policy_list = {
     "constraints/gcp.resourceLocations" = {
       inherit_from_parent = null
-      suggested_value     = "northamerica-northeast1"
+      suggested_value     = "asia-southeast1"
       status              = false
       # The policies for location does not work with explicit deny rules,
       values = ["in:asia-locations", "in:australia-locations", "in:europe-locations", "in:us-locations", "in:southamerica-locations"]

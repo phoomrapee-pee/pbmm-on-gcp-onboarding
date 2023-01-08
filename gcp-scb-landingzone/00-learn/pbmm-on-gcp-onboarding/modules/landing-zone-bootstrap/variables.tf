@@ -60,7 +60,7 @@ variable "billing_account" {
 
 variable "default_region" {
   type    = string
-  default = "northamerica-northeast1"
+  default = "asia-southeast1"
 }
 
 variable "org_id" {
@@ -128,7 +128,7 @@ variable "environment" {
 variable "location" {
   type        = string
   description = "location for naming and resource placement"
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 
 variable "owner" {

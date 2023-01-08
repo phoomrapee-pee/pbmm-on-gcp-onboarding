@@ -25,14 +25,14 @@ unless a third party device is used for NAT(not included)
 | additional\_user\_defined\_string | Additional user defined string. | `string` | `""` | no |
 | auto\_create\_subnetworks | When set to true, the network is created in 'auto subnet mode' and it will create a subnet for each region automatically across the 10.128.0.0/9 address range. When set to false, the network is created in 'custom subnet mode' so the user can explicitly connect subnetwork resources. | `bool` | `false` | no |
 | billing\_account | billing account ID | `string` | n/a | yes |
-| default\_region | Default region to deploy resources to | `string` | `"northamerica-northeast1"` | no |
+| default\_region | Default region to deploy resources to | `string` | `"asia-southeast1"` | no |
 | delete\_default\_internet\_gateway\_routes | If set, ensure that all routes within the network specified whose names begin with 'default-route' and with a next hop of 'default-internet-gateway' are deleted | `bool` | `true` | no |
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | description | An optional description of this resource. The resource must be recreated to modify this field. | `string` | `""` | no |
 | enable\_endpoint\_independent\_mapping | Specifies if endpoint independent mapping is enabled. | `bool` | `null` | no |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
 | icmp\_idle\_timeout\_sec | Timeout (in seconds) for ICMP connections. Defaults to 30s if not set. Changing this forces a new NAT to be created. | `string` | `"30"` | no |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | log\_config\_enable | Indicates whether or not to export logs | `bool` | `false` | no |
 | log\_config\_filter | Specifies the desired filtering of logs on this NAT. Valid values are: "ERRORS\_ONLY", "TRANSLATIONS\_ONLY", "ALL" | `string` | `"ALL"` | no |
 | min\_ports\_per\_vm | Minimum number of ports allocated to a VM from this NAT config. Defaults to 64 if not set. Changing this forces a new NAT to be created. | `string` | `"64"` | no |
@@ -45,7 +45,7 @@ unless a third party device is used for NAT(not included)
 | network\_name | The name of the network being created | `any` | n/a | yes |
 | owner | Division or group responsible for security and financial commitment. | `string` | n/a | yes |
 | parent | folder/#### or organizations/#### to place the project into | `string` | n/a | yes |
-| region | Region for nat gw | `string` | `"northamerica-northeast1"` | no |
+| region | Region for nat gw | `string` | `"asia-southeast1"` | no |
 | router\_asn | Router ASN, only if router is not passed in and is created by the module. | `string` | `"64514"` | no |
 | router\_name | The name of the router in which this NAT will be configured. Changing this forces a new NAT to be created. | `any` | n/a | yes |
 | routes | List of routes being created in this VPC | `list(map(string))` | `[]` | no |

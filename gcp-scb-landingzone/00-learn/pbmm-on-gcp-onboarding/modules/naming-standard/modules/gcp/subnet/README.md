@@ -29,7 +29,7 @@ No provider.
 | additional\_user\_defined\_string | User defined string for the subnet. | `string` | n/a | yes |
 | department\_code | Two character department code. Format: Uppercase lowercase e.g. Sc. | `string` | n/a | yes |
 | environment | Single character environment code. Valid values: P = Production, D = Development, Q = Quality Assurance, S = Sandbox | `string` | n/a | yes |
-| location | CSP and Region. Valid values: e = northamerica-northeast1 | `string` | n/a | yes |
+| location | CSP and Region. Valid values: e = asia-southeast1 | `string` | n/a | yes |
 | user\_defined\_string | User defined string for the vpc. | `string` | n/a | yes |
 
 ## Outputs

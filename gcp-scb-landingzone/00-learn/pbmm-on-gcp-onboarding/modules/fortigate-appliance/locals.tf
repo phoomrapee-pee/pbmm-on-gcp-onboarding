@@ -32,7 +32,7 @@ locals {
     active = {
       priority      = 255
       number_suffix = "01"
-      zone          = "northamerica-northeast1-a"
+      zone          = "asia-southeast1-a"
       license_key   = "FGVM08TM21002329.lic"
       port1_ip      = google_compute_address.active["port1"].address
       port2_ip      = google_compute_address.active["port2"].address
@@ -45,7 +45,7 @@ locals {
     passive = {
       priority      = 0
       number_suffix = "02"
-      zone          = "northamerica-northeast1-b"
+      zone          = "asia-southeast1-b"
       license_key   = "FGVM08TM21002330.lic"
       port1_ip      = google_compute_address.passive["port1"].address
       port2_ip      = google_compute_address.passive["port2"].address

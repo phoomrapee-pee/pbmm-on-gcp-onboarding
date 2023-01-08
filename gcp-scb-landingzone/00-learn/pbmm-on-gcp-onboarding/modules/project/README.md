@@ -16,7 +16,7 @@ the future it will be utilized to deploy application projects.
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
 | iap\_tunnel\_members\_list | list of users to grant iap.tunnelResourceAccessor role | `list(string)` | `[]` | no |
 | labels | Resource labels. | `map(string)` | `{}` | no |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | oslogin | Enable OS Login. | `bool` | `false` | no |
 | oslogin\_admins | List of IAM-style identities that will be granted roles necessary for OS Login administrators. | `list(string)` | `[]` | no |
 | oslogin\_users | List of IAM-style identities that will be granted roles necessary for OS Login users. | `list(string)` | `[]` | no |

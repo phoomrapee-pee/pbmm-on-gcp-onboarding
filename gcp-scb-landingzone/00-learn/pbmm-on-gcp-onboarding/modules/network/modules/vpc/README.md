@@ -57,7 +57,7 @@ No requirements.
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | description | An optional description of this resource. The resource must be recreated to modify this field. | `string` | `""` | no |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | mtu | The network MTU. Must be a value between 1460 and 1500 inclusive. If set to 0 (meaning MTU is unset), the network will default to 1460 automatically. | `number` | `0` | no |
 | network\_name | The name of the network being created | `any` | n/a | yes |
 | project\_id | The ID of the project where this VPC will be created | `any` | n/a | yes |

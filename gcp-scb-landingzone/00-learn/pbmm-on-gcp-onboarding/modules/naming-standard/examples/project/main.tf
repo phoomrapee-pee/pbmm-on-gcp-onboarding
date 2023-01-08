@@ -19,7 +19,7 @@
 locals {
   department_code = "Ga"
   environment     = "D"
-  location        = "northamerica-northeast1"
+  location        = "asia-southeast1"
 }
 
 module "new_project" {

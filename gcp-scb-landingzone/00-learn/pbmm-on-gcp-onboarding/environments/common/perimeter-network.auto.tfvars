@@ -19,7 +19,7 @@
 public_perimeter_net = {
   user_defined_string            = "prd" # REQUIRED EDIT must contribute to being globally unique
   additional_user_defined_string = "perim" # OPTIONAL EDIT check 61 char aggregate limit
-  billing_account                = "REPLACE_WITH_BILLING_ID" #####-#####-#####
+  billing_account                = "01FF4E-383D23-F85450" #####-#####-#####
   services                       = ["logging.googleapis.com"]
   labels                         = {}
   networks = [
@@ -36,7 +36,7 @@ public_perimeter_net = {
         {
           subnet_name           = "public" # Optional edit
           subnet_ip             = "10.10.0.0/26" # Recommended Edit
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the public interface of the fortigate firewall"
@@ -55,7 +55,7 @@ public_perimeter_net = {
 private_perimeter_net = {
   user_defined_string            = "prod" # must be globally unique
   additional_user_defined_string = "priper" # check 61 char aggregate limit
-  billing_account                = "REPLACE_WITH_BILLING_ID" #####-#####-#####
+  billing_account                = "01FF4E-383D23-F85450" #####-#####-#####
   services                       = ["logging.googleapis.com"]
   networks = [
     {
@@ -71,7 +71,7 @@ private_perimeter_net = {
         {
           subnet_name           = "private"
           subnet_ip             = "10.10.0.64/26" #Recommended Edit
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the private interface of the fortigate firewall"
@@ -90,7 +90,7 @@ private_perimeter_net = {
 ha_perimeter_net = {
   user_defined_string            = "prod" # must be globally unique
   additional_user_defined_string = "perim" # check 61 char agreggate limit
-  billing_account                = "REPLACE_WITH_BILLING_ID" #####-#####-#####
+  billing_account                = "01FF4E-383D23-F85450" #####-#####-#####
   services                       = ["logging.googleapis.com"]
   networks = [
     {
@@ -106,7 +106,7 @@ ha_perimeter_net = {
         {
           subnet_name           = "hasync"
           subnet_ip             = "10.10.0.128/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the HA Sync interface of the fortigate firewall"
@@ -126,7 +126,7 @@ ha_perimeter_net = {
 management_perimeter_net = {
   user_defined_string            = "prod" # must be globally unique
   additional_user_defined_string = "perim" # check 61 char aggregate limit
-  billing_account                = "REPLACE_WITH_BILLING_ID" #####-#####-#####
+  billing_account                = "01FF4E-383D23-F85450" #####-#####-#####
   services                       = ["logging.googleapis.com"]
   networks = [
     {
@@ -142,7 +142,7 @@ management_perimeter_net = {
         {
           subnet_name           = "management"
           subnet_ip             = "10.10.0.192/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the management interface of the fortigate firewall"

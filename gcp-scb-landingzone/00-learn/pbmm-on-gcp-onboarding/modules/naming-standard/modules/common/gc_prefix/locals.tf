@@ -18,7 +18,7 @@
 
 locals {
   csp_region = {
-    northamerica-northeast1 = "e"
+    asia-southeast1 = "e"
   }
 
   gc_prefix = "${var.department_code}${var.environment}${local.csp_region[var.location]}"

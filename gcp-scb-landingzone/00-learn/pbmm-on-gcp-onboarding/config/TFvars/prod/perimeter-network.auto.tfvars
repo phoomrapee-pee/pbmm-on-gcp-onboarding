@@ -35,7 +35,7 @@ public_perimeter_net = {
         {
           subnet_name           = "public"
           subnet_ip             = "10.10.0.0/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the public interface of the fortigate firewall"
@@ -70,7 +70,7 @@ private_perimeter_net = {
         {
           subnet_name           = "private"
           subnet_ip             = "10.10.0.64/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the private interface of the fortigate firewall"
@@ -105,7 +105,7 @@ ha_perimeter_net = {
         {
           subnet_name           = "hasync"
           subnet_ip             = "10.10.0.128/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the HA Sync interface of the fortigate firewall"
@@ -141,7 +141,7 @@ management_perimeter_net = {
         {
           subnet_name           = "management"
           subnet_ip             = "10.10.0.192/26"
-          subnet_region         = "northamerica-northeast1"
+          subnet_region         = "asia-southeast1"
           subnet_private_access = true
           subnet_flow_logs      = true
           description           = "This subnet is used for the management interface of the fortigate firewall"

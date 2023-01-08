@@ -122,7 +122,7 @@ No requirements.
 | <a name="input_image"></a> [image](#input\_image) | Name of Image to use | `string` | `"fortinet-fgtondemand-646-20210531-001-w-license"` | no |
 | <a name="input_image_location"></a> [image\_location](#input\_image\_location) | Project where source image is located | `string` | `"fortigcp-project-001"` | no |
 | <a name="input_internal_port"></a> [internal\_port](#input\_internal\_port) | The map key of network\_ports that is to be used for internal network | `string` | `"port3"` | no |
-| <a name="input_location"></a> [location](#input\_location) | Location for naming | `string` | `"northamerica-northeast1"` | no |
+| <a name="input_location"></a> [location](#input\_location) | Location for naming | `string` | `"asia-southeast1"` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Instance size | `string` | `"n1-standard-4"` | no |
 | <a name="input_mgmt_port"></a> [mgmt\_port](#input\_mgmt\_port) | The map key of network\_ports that is to be used for device management | `string` | `"port2"` | no |
 | <a name="input_mirror_port"></a> [mirror\_port](#input\_mirror\_port) | The map key of network\_ports that is to be used for mirror network | `string` | `"port4"` | no |
@@ -130,12 +130,12 @@ No requirements.
 | <a name="input_network_tags"></a> [network\_tags](#input\_network\_tags) | Network tags to add to instance | `list(any)` | `[]` | no |
 | <a name="input_owner"></a> [owner](#input\_owner) | Division or group responsible for security and financial commitment. | `string` | n/a | yes |
 | <a name="input_project"></a> [project](#input\_project) | Project to place the Fortigates in | `any` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | Region to place firwalls | `string` | `"northamerica-northeast1"` | no |
+| <a name="input_region"></a> [region](#input\_region) | Region to place firwalls | `string` | `"asia-southeast1"` | no |
 | <a name="input_sleep_seconds"></a> [sleep\_seconds](#input\_sleep\_seconds) | number of seconds to sleep before attempting to get the API key | `number` | `100` | no |
 | <a name="input_transit_port"></a> [transit\_port](#input\_transit\_port) | The map key of network\_ports that is to be used for the transit network | `string` | `"port1"` | no |
 | <a name="input_user_defined_string"></a> [user\_defined\_string](#input\_user\_defined\_string) | User defined string. | `string` | n/a | yes |
-| <a name="input_zone_1"></a> [zone\_1](#input\_zone\_1) | Zone to place the first Fortigate appliance in | `string` | `"northamerica-northeast1-a"` | no |
-| <a name="input_zone_2"></a> [zone\_2](#input\_zone\_2) | Zone to place the second Fortigate appliance in | `string` | `"northamerica-northeast1-b"` | no |
+| <a name="input_zone_1"></a> [zone\_1](#input\_zone\_1) | Zone to place the first Fortigate appliance in | `string` | `"asia-southeast1-a"` | no |
+| <a name="input_zone_2"></a> [zone\_2](#input\_zone\_2) | Zone to place the second Fortigate appliance in | `string` | `"asia-southeast1-b"` | no |
 
 ## Outputs
 

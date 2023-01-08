@@ -20,7 +20,7 @@ variable "billing_account" {
 }
 
 variable "region" {
-  default = "northamerica-northeast1"
+  default = "asia-southeast1"
 }
 variable "image_location" {
   description = "Project where source image is located"
@@ -34,12 +34,12 @@ variable "image" {
 
 variable "zone_1" {
   description = "Zone to place the first Fortigate appliance in"
-  default     = "northamerica-northeast1-a"
+  default     = "asia-southeast1-a"
 }
 
 variable "zone_2" {
   description = "Zone to place the second Fortigate appliance in"
-  default     = "northamerica-northeast1-b"
+  default     = "asia-southeast1-b"
 }
 
 variable "parent" {
@@ -74,5 +74,5 @@ variable "user_defined_string" {
 variable "location" {
   type        = string
   description = "location for naming and resource placement"
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }

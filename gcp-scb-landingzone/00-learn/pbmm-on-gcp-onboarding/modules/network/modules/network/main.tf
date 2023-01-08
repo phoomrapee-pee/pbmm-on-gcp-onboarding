@@ -53,7 +53,7 @@ module "subnets" {
   subnet_name           = each.value.subnet_name
   description           = lookup(each.value, "description", "")
   subnet_private_access = lookup(each.value, "subnet_private_access", false)
-  subnet_region         = lookup(each.value, "subnet_region", "northamerica-northeast1")
+  subnet_region         = lookup(each.value, "subnet_region", "asia-southeast1")
   subnet_ip             = each.value.subnet_ip
 
   secondary_ranges = lookup(each.value, "secondary_ranges", [])
@@ -100,7 +100,7 @@ module "router" {
   vpn_config      = var.vpn_config
   router_name = each.value.router_name
   description = lookup(each.value, "description", "")
-  region      = lookup(each.value, "region", "northamerica-northeast1")
+  region      = lookup(each.value, "region", "asia-southeast1")
 
   bgp = lookup(each.value, "bgp", {})
 }

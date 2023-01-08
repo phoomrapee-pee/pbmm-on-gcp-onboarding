@@ -112,9 +112,9 @@ admin_super@cloudshell:~/traffic/reference-architecture (traffic-os)$ git push g
 https://cloud.google.com/sdk/gcloud/reference/artifacts/repositories/create
 
 ```
-root_@cloudshell:~/traffic/magellan (traffic-agz)$ gcloud artifacts repositories create magellan --location=northamerica-northeast1 --repository-format=docker
+root_@cloudshell:~/traffic/magellan (traffic-agz)$ gcloud artifacts repositories create magellan --location=asia-southeast1 --repository-format=docker
 Create request issued for: [magellan]
-Waiting for operation [projects/traffic-agz/locations/northamerica-northeast1/operations/be33c737-7ed7-4565-857c-3332142c0b91] to complete...done.     
+Waiting for operation [projects/traffic-agz/locations/asia-southeast1/operations/be33c737-7ed7-4565-857c-3332142c0b91] to complete...done.     
 Created repository [magellan].
 ```
 
@@ -135,7 +135,7 @@ STATUS:
 
 ```
 Region
-northamerica-northeast1 (Montréal)
+asia-southeast1 (Montréal)
 DB Version
 PostgreSQL 14
 vCPUs
@@ -166,26 +166,26 @@ Enabled
 
 ```
 get the docker pull image manifest from
-https://console.cloud.google.com/artifacts/docker/traffic-agz/northamerica-northeast1/magellan/magellan/sha256:97f7d5a8b1038f467133052052b94327404ecd5bbbe2dc2d43e7e9627548cf60;tab=install?project=traffic-agz&supportedpurview=project
+https://console.cloud.google.com/artifacts/docker/traffic-agz/asia-southeast1/magellan/magellan/sha256:97f7d5a8b1038f467133052052b94327404ecd5bbbe2dc2d43e7e9627548cf60;tab=install?project=traffic-agz&supportedpurview=project
 
 gcloud services enable run.googleapis.com
 
 gcloud beta run deploy traffic-generation-target \
---image=northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation-target/traffic-generation-target@sha256:dc34cd9de43dbda8fddce647d54d79a49718391c4032453aa17c28716fc215e5 \
+--image=asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation-target/traffic-generation-target@sha256:dc34cd9de43dbda8fddce647d54d79a49718391c4032453aa17c28716fc215e5 \
 --allow-unauthenticated \
 --service-account=25019029317-compute@developer.gserviceaccount.com \
 --timeout=30 \
 --cpu=2 \
 --memory=4Gi \
 --execution-environment=gen2 \
---region=northamerica-northeast1 \
+--region=asia-southeast1 \
 --project=traffic-os
 ```
 
 ## Deploy instance to a VPC public subnet
 
 ```
-gcloud compute instances create traffic-target-public --project=traffic-os --zone=northamerica-northeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=traffic-target-public,image=projects/debian-cloud/global/images/debian-11-bullseye-v20220519,mode=rw,size=10,type=projects/traffic-os/zones/us-central1-a/diskTypes/pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
+gcloud compute instances create traffic-target-public --project=traffic-os --zone=asia-southeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=default --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --create-disk=auto-delete=yes,boot=yes,device-name=traffic-target-public,image=projects/debian-cloud/global/images/debian-11-bullseye-v20220519,mode=rw,size=10,type=projects/traffic-os/zones/us-central1-a/diskTypes/pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --reservation-affinity=any
 ```
 
 ## VPC private subnet testing via VPC Connector to VMs
@@ -197,10 +197,10 @@ see https://cloud.google.com/run/docs/configuring/connecting-vpc
 Test public VM first
 
 get image from cloud run
-northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781
+asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781
 
 
-gcloud compute instances create-with-container traffic-generation-target2 --project=traffic-os --zone=northamerica-northeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=public --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --image=projects/cos-cloud/global/images/cos-stable-97-16919-29-40 --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=traffic-generation-target2 --container-image=northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 --container-restart-policy=always --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=container-vm=cos-stable-97-16919-29-40
+gcloud compute instances create-with-container traffic-generation-target2 --project=traffic-os --zone=asia-southeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=public --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --image=projects/cos-cloud/global/images/cos-stable-97-16919-29-40 --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=traffic-generation-target2 --container-image=asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 --container-restart-policy=always --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=container-vm=cos-stable-97-16919-29-40
 
 firewall 22 to allow for ssh and 8080
 
@@ -227,12 +227,12 @@ target
 
 Test private vm
 
-gcloud compute instances create-with-container traffic-generation-target-private --project=traffic-os --zone=northamerica-northeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=private --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --image=projects/cos-cloud/global/images/cos-stable-97-16919-29-40 --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=traffic-generation-target-private --container-image=northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 --container-restart-policy=always --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=container-vm=cos-stable-97-16919-29-40
+gcloud compute instances create-with-container traffic-generation-target-private --project=traffic-os --zone=asia-southeast1-a --machine-type=e2-medium --network-interface=network-tier=PREMIUM,subnet=private --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=25019029317-compute@developer.gserviceaccount.com --scopes=https://www.googleapis.com/auth/cloud-platform --tags=http-server,https-server --image=projects/cos-cloud/global/images/cos-stable-97-16919-29-40 --boot-disk-size=10GB --boot-disk-type=pd-balanced --boot-disk-device-name=traffic-generation-target-private --container-image=asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 --container-restart-policy=always --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=container-vm=cos-stable-97-16919-29-40
 
 
 admin_super@traffic-generation-target-private ~ $ docker ps
 CONTAINER ID   IMAGE                                                                                     COMMAND                  CREATED          STATUS          PORTS     NAMES
-c1698d7f484e   northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation   "java -Djava.securit…"   23 seconds ago   Up 22 seconds             klt-traffic-generation-target-private-djen
+c1698d7f484e   asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation   "java -Djava.securit…"   23 seconds ago   Up 22 seconds             klt-traffic-generation-target-private-djen
 efc51a04cb2d   gcr.io/stackdriver-agents/stackdriver-logging-agent:1.9.4                                 "/entrypoint.sh /usr…"   38 seconds ago   Up 35 seconds             stackdriver-logging-agent
 
 notice the logging agent
@@ -246,7 +246,7 @@ enable serverless VPC access API
 https://console.cloud.google.com/networking/connectors/add?project=traffic-os
 
 gcloud compute networks vpc-access connectors create traffic-generation-priv \
---region=northamerica-northeast1 \
+--region=asia-southeast1 \
 --network=target \
 --range=10.0.3.0/28 \
 --min-instances=2 \
@@ -256,15 +256,15 @@ gcloud compute networks vpc-access connectors create traffic-generation-priv \
 cloud run
 
 gcloud run deploy traffic-generation-magellan-private \
---image=northamerica-northeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 \
+--image=asia-southeast1-docker.pkg.dev/traffic-os/traffic-generation/traffic-generation@sha256:5a8ba156be1baa972eb49d90a69ee97e3984aae75d783e1e132db5275f392781 \
 --allow-unauthenticated \
 --service-account=25019029317-compute@developer.gserviceaccount.com \
 --timeout=30 \
 --cpu=2 \
 --memory=2Gi \
---vpc-connector=projects/traffic-os/locations/northamerica-northeast1/connectors/traffic-generation-privat \
+--vpc-connector=projects/traffic-os/locations/asia-southeast1/connectors/traffic-generation-privat \
 --execution-environment=gen2 \
---region=northamerica-northeast1 \
+--region=asia-southeast1 \
 --project=traffic-os
 
 setup traffic

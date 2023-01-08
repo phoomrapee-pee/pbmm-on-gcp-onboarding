@@ -24,4 +24,4 @@ environment:
     S : "Sandbox"
 csp_region:
   codes:
-    e : "GCP northamerica-northeast1"
+    e : "GCP asia-southeast1"

@@ -14,20 +14,20 @@
 
 ---
 orgId: ###########
-defaultRegion: northamerica-northeast1
+defaultRegion: asia-southeast1
 departmentCode: <department-code>
 owner: <owner>
 environment: D
-location: northamerica-northeast1
+location: asia-southeast1
 labels: {}
 
 bootstrap:
   userDefinedString: bootstrap # must be globally unique
   additionalUserDefinedString: ""
-  billingAccount: ######-######-######
-  parent: folders/###########
+  billingAccount: 01FF4E-383D23-F85450
+  parent: folders/225610052760
   terraformDeploymentAccount: tf-deploy-sa
-  bootstrapEmail: 'user:user@domain.tld'
+  bootstrapEmail: 'user:phoomrapee@phoomrapee.systems'
   region: null
   projectServices:
   - "cloudbilling.googleapis.com"
@@ -67,7 +67,7 @@ orgPolicies:
   vmAllowedWithIpForward:
     - # projects/PROJECT_ID/zones/ZONE/instances/INSTANCE
 folders:
-  parent: folders/###########
+  parent: folders/225610052760
   names: [] # Production, NonProduction and Platform are included in the module
 audit:
   userDefinedString: <audit-name> # must be globally unique

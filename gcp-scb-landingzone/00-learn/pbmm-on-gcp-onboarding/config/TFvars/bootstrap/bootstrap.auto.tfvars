@@ -23,14 +23,14 @@
 #
 
 bootstrap = {
-  userDefinedString           = "" # REQUIRED EDIT Appended to project name/id
+  userDefinedString           = "querptz" # REQUIRED EDIT Appended to project name/id
   additionalUserDefinedString = "" # OPTIONAL EDIT Additional appended string
-  billingAccount              = "" # REQUIRED EDIT Billing Account in the format of ######-######-######
-  parent                      = "" # REQUIRED EDIT Organization Node in format "organizations/#############" or "folders/#############"
-  terraformDeploymentAccount  = "" # REQUIRED EDIT Name of the service account used to de ploy the terraform code
-  bootstrapEmail              = "" # REQUIRED EDIT In the form of 'user:user@email.com
-  region                      = "" # REQUIRED EDIT Region name. northamerica-northeast1
-  cloud_source_repo_name      = "" # REQUIRED EDIT CSR used as a mirror for code
+  billingAccount              = "01FF4E-383D23-F85450" # REQUIRED EDIT Billing Account in the format of ######-######-######
+  parent                      = "folders/225610052760" # REQUIRED EDIT Organization Node in format "organizations/#############" or "folders/225610052760##"
+  terraformDeploymentAccount  = "prj-bootstrap-terraform" # REQUIRED EDIT Name of the service account used to de ploy the terraform code
+  bootstrapEmail              = "user:phoomrapee@phoomrapee.systems" # REQUIRED EDIT In the form of 'user:user@email.com
+  region                      = "asia-southeast1" # REQUIRED EDIT Region name. asia-southeast1
+  cloud_source_repo_name      = "mirrorphoomrapeecsr" # REQUIRED EDIT CSR used as a mirror for code
   projectServices = [
     "cloudbilling.googleapis.com",
     "serviceusage.googleapis.com",
@@ -43,21 +43,21 @@ bootstrap = {
   ]
   tfstate_buckets = {
     common = {
-      name = "" # REQUIRED EDIT Must be globally unique
+      name = "bgphoomrapeeecommonnn" # REQUIRED EDIT Must be globally unique
       labels = {
       }
       storage_class = "STANDARD"
       force_destroy = true
     },
     nonprod = {
-      name = "" # REQUIRED EDIT Must be globally unique
+      name = "bgphoomrapeeecommonnnp" # REQUIRED EDIT Must be globally unique
       labels = {
       }
       force_destroy = true
       storage_class = "STANDARD"
     },
     prod = {
-      name = "" # REQUIRED EDIT Must be globally unique
+      name = "bgphoomrapeeecommonprd" # REQUIRED EDIT Must be globally unique
       labels = {
       }
       force_destroy = true
@@ -67,10 +67,10 @@ bootstrap = {
 }
 # Cloud Build
 cloud_build_admins = [
-  "user:user@google.com", # REQUIRED EDIT user:user@google.com, group:users@google.com,serviceAccount:robot@PROJECT.iam.gserviceaccount.com
+  "serviceAccount:prj-bootstrap-terraform@prj-bootstrap-script.iam.gserviceaccount.com", # REQUIRED EDIT user:user@google.com, # REQUIRED EDIT user:user@google.com, group:users@google.com,serviceAccount:robot@PROJECT.iam.gserviceaccount.com
 ]
 group_build_viewers = [
-  "user:user@google.com", # REQUIRED EDIT user:user@google.com, group:users@google.com,serviceAccount:robot@PROJECT.iam.gserviceaccount.com
+  "serviceAccount:prj-bootstrap-terraform@prj-bootstrap-script.iam.gserviceaccount.com", # REQUIRED EDIT user:user@google.com, # REQUIRED EDIT user:user@google.com, group:users@google.com,serviceAccount:robot@PROJECT.iam.gserviceaccount.com
 ]
 
 #cloud_build_user_defined_string = ""

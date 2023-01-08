@@ -63,7 +63,7 @@ resource "google_compute_subnetwork" "fortigate_ha_subnetwork" {
   project       = module.project.project_id
   name          = "ha-subnetwork"
   ip_cidr_range = "10.2.0.0/24"
-  region        = "northamerica-northeast1"
+  region        = "asia-southeast1"
   network       = google_compute_network.fortigate_ha_network.id
 }
 
@@ -78,7 +78,7 @@ resource "google_compute_subnetwork" "internal_subnetwork" {
   project       = module.project.project_id
   name          = "internal-subnetwork"
   ip_cidr_range = "10.3.0.0/24"
-  region        = "northamerica-northeast1"
+  region        = "asia-southeast1"
   network       = google_compute_network.internal_network.id
 }
 
@@ -93,7 +93,7 @@ resource "google_compute_subnetwork" "mirror_subnetwork" {
   project       = module.project.project_id
   name          = "mirror-subnetwork"
   ip_cidr_range = "10.4.0.0/24"
-  region        = "northamerica-northeast1"
+  region        = "asia-southeast1"
   network       = google_compute_network.mirror_network.id
 }
 

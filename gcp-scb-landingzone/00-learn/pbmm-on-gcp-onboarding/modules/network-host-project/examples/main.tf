@@ -45,7 +45,7 @@ module "host_project" {
     {
       subnet_name           = "subnet01"
       subnet_ip             = "10.10.20.0/24"
-      subnet_region         = "northamerica-northeast1"
+      subnet_region         = "asia-southeast1"
       subnet_private_access = "true"
       subnet_flow_logs      = "true"
       description           = "This subnet has a description"

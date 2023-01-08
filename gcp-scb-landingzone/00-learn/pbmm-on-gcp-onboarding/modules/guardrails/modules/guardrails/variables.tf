@@ -31,7 +31,7 @@ variable "project_id" {
 variable "region" {
   description = "The default region of all resources."
   type        = string
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 variable "asset_inventory_job_schedule" {
   description = "The a string representing the CRON schedule of generating asset inventory.  Default is daily at 8AM EST"

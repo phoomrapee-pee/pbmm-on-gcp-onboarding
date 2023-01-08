@@ -13,7 +13,7 @@ module "VM1" {
 
   vm_name     = "foo"
   vm_env      = "bar"
-  vm_zone     = "northamerica-northeast1-a"
+  vm_zone     = "asia-southeast1-a"
   image       = "rhel-latest"
   subnet_name = "snet-bfpte-app-nane"
 
@@ -85,7 +85,7 @@ No requirements.
 | <a name="input_image"></a> [image](#input\_image) | Image name | `string` | `"rhel-latest"` | no |
 | <a name="input_image_location"></a> [image\_location](#input\_image\_location) | Instance source image project | `any` | n/a | yes |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to place on the VM | `map(string)` | `{}` | no |
-| <a name="input_location"></a> [location](#input\_location) | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| <a name="input_location"></a> [location](#input\_location) | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | VM size | `string` | `"n1-standard-2"` | no |
 | <a name="input_metadata"></a> [metadata](#input\_metadata) | custom\_metadata to add to the instance | `map(string)` | `{}` | no |
 | <a name="input_metadata_startup_script"></a> [metadata\_startup\_script](#input\_metadata\_startup\_script) | startup script for vm | `string` | `null` | no |
@@ -96,7 +96,7 @@ No requirements.
 | <a name="input_service_account_email_address"></a> [service\_account\_email\_address](#input\_service\_account\_email\_address) | Service account to run the VM | `any` | n/a | yes |
 | <a name="input_service_account_scopes"></a> [service\_account\_scopes](#input\_service\_account\_scopes) | GCE scopes which VM should be able to access and/or change | `list` | `[]` | no |
 | <a name="input_user_defined_string"></a> [user\_defined\_string](#input\_user\_defined\_string) | User defined string. | `string` | n/a | yes |
-| <a name="input_vm_zone"></a> [vm\_zone](#input\_vm\_zone) | GCE zone to deploy VM | `string` | `"northamerica-northeast1-a"` | no |
+| <a name="input_vm_zone"></a> [vm\_zone](#input\_vm\_zone) | GCE zone to deploy VM | `string` | `"asia-southeast1-a"` | no |
 
 ## Outputs
 

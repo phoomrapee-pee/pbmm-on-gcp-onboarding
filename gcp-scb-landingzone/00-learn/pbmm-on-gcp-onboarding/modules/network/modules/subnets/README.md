@@ -75,7 +75,7 @@ No requirements.
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | description | n/a | `string` | n/a | yes |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | log\_config | n/a | <pre>object({<br>    aggregation_interval = optional(string)<br>    flow_sampling        = optional(number)<br>    metadata             = optional(string)<br>  })</pre> | n/a | yes |
 | network\_name | The name of the network where subnets will be created | `any` | n/a | yes |
 | project\_id | The ID of the project where subnets will be created | `any` | n/a | yes |

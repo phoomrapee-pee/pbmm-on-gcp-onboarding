@@ -54,7 +54,7 @@ variable "group_build_viewers" {
 variable "default_region" {
   description = "Default region to create resources where applicable."
   type        = string
-  default     = "northamerica-northeast1"
+  default     = "asia-southeast1"
 }
 
 variable "terraform_sa_email" {

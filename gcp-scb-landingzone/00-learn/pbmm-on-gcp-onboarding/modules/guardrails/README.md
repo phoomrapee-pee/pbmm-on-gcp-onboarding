@@ -13,7 +13,7 @@
 | org\_id\_scan\_list | A list of organization\_id's to scan. | `list(string)` | `[]` | no |
 | owner | Owner of the project | `string` | `""` | no |
 | parent | Parent folder or organization in 'folders/folder\_id' or 'organizations/org\_id' format to create the guardrails in. | `string` | `null` | no |
-| region | The default region of all resources. | `string` | `"northamerica-northeast1"` | no |
+| region | The default region of all resources. | `string` | `"asia-southeast1"` | no |
 | user\_defined\_string | Environment modifier to deploy multiple instances | `string` | `""` | no |
 
 ## Outputs

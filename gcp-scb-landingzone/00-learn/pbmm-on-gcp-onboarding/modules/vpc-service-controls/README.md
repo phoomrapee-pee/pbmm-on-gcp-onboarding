@@ -103,7 +103,7 @@ of Service Accounts, Groups or Users to add to the test access level.
 | bridge\_service\_perimeter | map used to configure a bridge service perimeter | <pre>map(object({<br>    description          = optional(string)<br>    perimeter_name       = string<br>    resources            = optional(list(string))<br>    resources_by_numbers = optional(list(string))<br>    })<br>  )</pre> | `{}` | no |
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | parent\_id | The parent of this AccessPolicy in the Cloud Resource Hierarchy. As of now, only organization are accepted as parent. | `string` | n/a | yes |
 | policy\_id | Policy ID is only used when a policy already exists | `string` | `null` | no |
 | policy\_name | The policy's name, only used when creating a new policy | `string` | `"orgname-policy"` | no |

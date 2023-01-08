@@ -42,7 +42,7 @@ No resources.
 | <a name="input_department_code"></a> [department\_code](#input\_department\_code) | Two character department code. Format: Uppercase lowercase e.g. Sc. | `string` | n/a | yes |
 | <a name="input_device_type"></a> [device\_type](#input\_device\_type) | Three character string. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Single character environment code. Valid values: P = Production, D = Development, Q = Quality Assurance, S = Sandbox | `string` | n/a | yes |
-| <a name="input_location"></a> [location](#input\_location) | CSP and Region. Valid values: e = northamerica-northeast1 | `string` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | CSP and Region. Valid values: e = asia-southeast1 | `string` | n/a | yes |
 | <a name="input_number_suffix"></a> [number\_suffix](#input\_number\_suffix) | Number suffix for the resource name. | `string` | `"01"` | no |
 | <a name="input_user_defined_string"></a> [user\_defined\_string](#input\_user\_defined\_string) | User defined string. | `string` | n/a | yes |
 

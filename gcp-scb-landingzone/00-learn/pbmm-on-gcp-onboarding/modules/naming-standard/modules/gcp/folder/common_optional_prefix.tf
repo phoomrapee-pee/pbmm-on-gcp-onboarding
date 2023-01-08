@@ -32,7 +32,7 @@ variable "environment" {
 
 variable "location" {
   type        = string
-  description = "CSP and Region. Valid values: e = northamerica-northeast1"
+  description = "CSP and Region. Valid values: e = asia-southeast1"
 
   default = ""
 }

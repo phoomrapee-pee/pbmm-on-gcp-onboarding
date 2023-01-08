@@ -56,7 +56,7 @@ No requirements.
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | description | n/a | `string` | n/a | yes |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | network\_name | The name of the network to attach to this router | `any` | n/a | yes |
 | project\_id | The ID of the project where the routes will be created | `any` | n/a | yes |
 | region | n/a | `string` | n/a | yes |

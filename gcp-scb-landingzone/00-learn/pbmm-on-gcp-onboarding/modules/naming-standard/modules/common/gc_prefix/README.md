@@ -21,7 +21,7 @@ No provider.
 |------|-------------|------|---------|:--------:|
 | department\_code | Two character department code. Format: Uppercase lowercase e.g. Sc. | `string` | n/a | yes |
 | environment | Single character environment code. Valid values: P = Production, D = Development, Q = Quality Assurance, S = Sandbox | `string` | n/a | yes |
-| location | CSP and Region. Valid values: northamerica-northeast1. Code will be used for naming | `string` | n/a | yes |
+| location | CSP and Region. Valid values: asia-southeast1. Code will be used for naming | `string` | n/a | yes |
 
 ## Outputs
 
