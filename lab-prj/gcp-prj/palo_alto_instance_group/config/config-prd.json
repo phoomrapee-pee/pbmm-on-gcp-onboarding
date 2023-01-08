@@ -1,0 +1,27 @@
+{
+  "network_id": "vpc-rbh-platform-hub-untrusted-prd",
+  "instance_group_list": [
+    {
+      "group_id": "gp1",
+      "instance_zone": "asia-southeast1-a",
+      "named_ports": [
+        {
+          "name": "superapp-prd",
+          "port": "8445"
+        }
+      ],
+      "instance_name_list": ["fw-paloalto-prd-01-0"]
+    },
+    {
+      "group_id": "gp2",
+      "instance_zone": "asia-southeast1-b",
+      "named_ports": [
+        {
+          "name": "superapp-prd",
+          "port": "8445"
+        }
+      ],
+      "instance_name_list": ["fw-paloalto-prd-02-0"]
+    }
+  ]
+}

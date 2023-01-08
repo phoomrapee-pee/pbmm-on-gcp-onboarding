@@ -1,0 +1,5 @@
+Copyright (c) 2022 Publicis Sapient
+ 
+This software and associated documentation files (the "Software") is the sole and exclusive property of the corporations making up Publicis Sapient, including all intellectual property rights in, and rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of, the Software. In order to use this Software, you must first enter into a relevant agreement with a Publicis Sapient corporation which grants the right for you to do so, and you must not use this Software outside of the bounds of the particular grant of rights that applies.
+ 
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.

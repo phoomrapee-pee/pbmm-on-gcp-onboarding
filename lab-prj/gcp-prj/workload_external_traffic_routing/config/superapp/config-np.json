@@ -1,0 +1,37 @@
+{
+  "url_map": {
+    "host_rule_list": [
+      {
+        "rule_name": "poc05-dev",
+        "host_list": ["ota-poc05-dev.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "test-service-3",
+        "host_list": ["ota-test-service-3.np.gcpppv.tech"],
+        "path_rule_list": [
+          {
+            "id": "path_rule_1",
+            "path_list": ["/home", "/config"]
+          }
+        ]
+      },
+      {
+        "rule_name": "api-interface-dev",
+        "host_list": ["ota-api-interface-dev.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "api-interface-alpha",
+        "host_list": ["ota-api-interface-alpha.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "api-interface-staging",
+        "host_list": ["ota-api-interface-staging.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "api-interface-preprod",
+        "host_list": ["ota-api-interface-preprod.np.gcpppv.tech"]
+      }
+
+    ]
+  }
+}

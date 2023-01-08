@@ -1,0 +1,58 @@
+{
+  "url_map": {
+    "host_rule_list": [
+      {
+        "rule_name": "common-services-odrd-dev",
+        "host_list": ["rbh-common-services-odrd-dev.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "common-services-inappcall-dev",
+        "host_list": ["rbh-common-services-inappcall-dev.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "rbh-common-services-odrd-sit",
+        "host_list": ["rbh-common-services-odrd-sit.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "rbh-common-services-inappcall-sit",
+        "host_list": ["rbh-common-services-inappcall-sit.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "rbh-common-services-odrd-uat",
+        "host_list": ["rbh-common-services-odrd-uat.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "rbh-common-services-inappcall-uat",
+        "host_list": ["rbh-common-services-inappcall-uat.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "rbh-common-services-odrd-pt",
+        "host_list": ["rbh-common-services-odrd-pt.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "rbh-common-services-inappcall-pt",
+        "host_list": ["rbh-common-services-inappcall-pt.np.gcpppv.tech"] 
+      },
+      {
+        "rule_name": "common-services-routesharing-dev",
+        "host_list": ["rbh-common-services-routesharing-dev.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "common-services-routesharing-sit",
+        "host_list": ["rbh-common-services-routesharing-sit.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "common-services-routesharing-uat",
+        "host_list": ["rbh-common-services-routesharing-uat.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "common-services-routesharing-pt",
+        "host_list": ["rbh-common-services-routesharing-pt.np.gcpppv.tech"]
+      },
+      {
+        "rule_name": "common-services-routesharing-ps",
+        "host_list": ["rbh-common-services-routesharing-ps.np.gcpppv.tech"]
+      }
+    ]
+  }
+}

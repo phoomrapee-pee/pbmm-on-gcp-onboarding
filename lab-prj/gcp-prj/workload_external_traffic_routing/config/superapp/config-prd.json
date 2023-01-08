@@ -1,0 +1,18 @@
+{
+  "url_map": {
+    "host_rule_list": [
+      {
+        "rule_name": "test-service",
+        "host_list": ["ota-test-service.gcpppv.tech"]
+      },
+      {
+        "rule_name": "ota-api-interface-prod",
+        "host_list": ["ota-api-interface-prod.gcpppv.tech"]
+      },
+      {
+        "rule_name": "ota-poc05-prod",
+        "host_list": ["ota-poc05-prod.gcpppv.tech"]
+      }
+    ]
+  }
+}

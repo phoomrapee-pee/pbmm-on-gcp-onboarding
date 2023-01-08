@@ -1,0 +1,59 @@
+{
+  "network_id": "vpc-rbh-platform-hub-untrusted-np",
+  "instance_group_list": [
+    {
+      "group_id": "gp1",
+      "instance_zone": "asia-southeast1-a",
+      "named_ports": [
+        {
+          "name": "https",
+          "port": "443"
+        },
+        {
+          "name": "superapp-np",
+          "port": "8443"
+        },
+        {
+          "name": "https-web2",
+          "port": "444"
+        },
+        {
+          "name": "superapp-pt",
+          "port": "8444"
+        },
+        {
+          "name": "common-np",
+          "port": "8445"
+        }
+      ],
+      "instance_name_list": ["fw-paloalto-np-01"]
+    },
+    {
+      "group_id": "gp2",
+      "instance_zone": "asia-southeast1-b",
+      "named_ports": [
+        {
+          "name": "https",
+          "port": "443"
+        },
+        {
+          "name": "superapp-np",
+          "port": "8443"
+        },
+        {
+          "name": "https-web2",
+          "port": "444"
+        },
+        {
+          "name": "superapp-pt",
+          "port": "8444"
+        },
+        {
+          "name": "common-np",
+          "port": "8445"
+        }
+      ],
+      "instance_name_list": ["fw-paloalto-np-02"]
+    }
+  ]
+}
