@@ -22,7 +22,7 @@
 
 module "landing_zone_bootstrap" {
   source                         = "../../modules/landing-zone-bootstrap"
-  billing_account                = var.bootstrap.billingAccount
+  billing_account                = "01FF4E-383D23-F85450"
   parent                         = var.bootstrap.parent
   terraform_deployment_account   = var.bootstrap.terraformDeploymentAccount
   bootstrap_email                = var.bootstrap.bootstrapEmail

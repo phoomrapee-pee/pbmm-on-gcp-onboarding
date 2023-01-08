@@ -18,10 +18,10 @@ This module provides:
 | additional\_user\_defined\_string | Additional user defined string. | `string` | `""` | no |
 | billing\_account | billing account ID | `string` | n/a | yes |
 | bootstrap\_email | Email of user:me@domain.com or group:us@domain.com to apply permissions to upload the state to the bucket once project as been created | `string` | n/a | yes |
-| default\_region | n/a | `string` | `"northamerica-northeast1"` | no |
+| default\_region | n/a | `string` | `"asia-southeast1"` | no |
 | department\_code | Code for department, part of naming module | `string` | n/a | yes |
 | environment | S-Sandbox P-Production Q-Quality D-development | `string` | n/a | yes |
-| location | location for naming and resource placement | `string` | `"northamerica-northeast1"` | no |
+| location | location for naming and resource placement | `string` | `"asia-southeast1"` | no |
 | org\_id | ID alone in the for of ##### to create the deploy account | `string` | n/a | yes |
 | owner | Division or group responsible for security and financial commitment. | `string` | n/a | yes |
 | parent | folder/#### or organizations/### to place the project into | `string` | n/a | yes |
